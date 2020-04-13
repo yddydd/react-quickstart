@@ -14,6 +14,7 @@ import FormComp from './components/formComp'
 import RefComp from './components/refComp'
 import StateHook from './components/stateHook'
 import About from './pages/About'
+import Home from './pages/Home'
 
 function App() {
   const ref = React.createRef();
@@ -21,12 +22,15 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/about">
+          <Route path="/about/:id">
             <About />
+          </Route>
+          <Route path="/home">
+            <Home />
           </Route>
         </Switch>
         <footer className="App-header">
-          <Link to="/about">About</Link>
+          <Link to="/about/222">About</Link>
           <img src={logo} className="App-logo" alt="logo" />
           <FunctionComp from="app"/>
           <ClassComp />
