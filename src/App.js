@@ -4,6 +4,7 @@ import './App.css';
 import FunctionComp from './components/functionComp'
 import ClassComp from './components/classComp'
 import ListComp from './components/listComp'
+import FormComp from './components/formComp'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <FunctionComp from="app"/>
         <ClassComp />
         <ListComp numbers={[1, 2, 3]}/>
+        <FormComp />
       </header>
     </div>
   );
