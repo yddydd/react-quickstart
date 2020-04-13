@@ -5,8 +5,10 @@ import FunctionComp from './components/functionComp'
 import ClassComp from './components/classComp'
 import ListComp from './components/listComp'
 import FormComp from './components/formComp'
+import RefComp from './components/refComp'
 
 function App() {
+  const ref = React.createRef();
   return (
     <div className="App">
       <header className="App-header">
@@ -15,6 +17,7 @@ function App() {
         <ClassComp />
         <ListComp numbers={[1, 2, 3]}/>
         <FormComp />
+        <RefComp ref={ref} />
       </header>
     </div>
   );

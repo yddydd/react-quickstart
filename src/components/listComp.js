@@ -48,11 +48,11 @@ export default class List extends React.Component {
   }
   render() {
     return (
-      <div>
+      <>
         {
           this.state.numbers.map((item, index) => <Item key={index} num={item} onAddNum={() => this.handleAdd(item)}/>)
         }
-      </div>
+      </>
     )
   }
 }
