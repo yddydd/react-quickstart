@@ -6,6 +6,7 @@ import ClassComp from './components/classComp'
 import ListComp from './components/listComp'
 import FormComp from './components/formComp'
 import RefComp from './components/refComp'
+import StateHook from './components/stateHook'
 
 function App() {
   const ref = React.createRef();
@@ -18,6 +19,7 @@ function App() {
         <ListComp numbers={[1, 2, 3]}/>
         <FormComp />
         <RefComp ref={ref} />
+        <StateHook />
       </header>
     </div>
   );
