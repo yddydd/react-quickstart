@@ -7,14 +7,6 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
-import { createStore } from 'redux'
-import todoApp from './models/reducers'
-import {
-  addTodo,
-  // toggleTodo,
-  // setVisibilityFilter,
-  // VisibilityFilters
-} from './models/actions'
 import logo from './logo.svg';
 import './App.css';
 import FunctionComp from './components/functionComp'
@@ -58,21 +50,5 @@ function App() {
     </Router>
   );
 }
-let store = createStore(todoApp)
-console.log('??store???', store.getState())
-// 每次 state 更新时，打印日志
-// 注意 subscribe() 返回一个函数用来注销监听器
-const unsubscribe = store.subscribe(() =>
-  console.log('=======', store.getState())
-)
 
-// 发起一系列 action
-store.dispatch(addTodo('Learn about actions'))
-store.dispatch(addTodo('Learn about reducers'))
-// store.dispatch(addTodo('Learn about store'))
-// store.dispatch(toggleTodo(0))
-// store.dispatch(toggleTodo(1))
-// store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
-
-unsubscribe()
 export default App;
