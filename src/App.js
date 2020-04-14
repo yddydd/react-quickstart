@@ -7,6 +7,8 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
+import { createStore } from 'redux'
+import todoApp from './models/reducers'
 import logo from './logo.svg';
 import './App.css';
 import FunctionComp from './components/functionComp'
@@ -50,5 +52,6 @@ function App() {
     </Router>
   );
 }
-
+let store = createStore(todoApp)
+console.log('??store???', store)
 export default App;
