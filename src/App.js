@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink,
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
@@ -30,7 +31,8 @@ function App() {
           </Route>
         </Switch>
         <footer className="App-header">
-          <Link to="/about/222">About</Link>
+          <NavLink to="/about/222" exact activeClassName="selected">About</NavLink>
+          <NavLink to="/home" strict>Home</NavLink>
           <img src={logo} className="App-logo" alt="logo" />
           <FunctionComp from="app"/>
           <ClassComp />
