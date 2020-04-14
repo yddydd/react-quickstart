@@ -7,8 +7,8 @@ import {
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters
 
+// reducer第一个参数 是本修改前的state的值 之前没有创建 那么就是取默认值
 function visibilityFilter(state = SHOW_ALL, action) {
-  console.log('????handle vis')
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter
@@ -18,7 +18,6 @@ function visibilityFilter(state = SHOW_ALL, action) {
 }
 
 function todos(state = [], action) {
-  console.log('????handle todos')
   switch (action.type) {
     case ADD_TODO:
       return [
