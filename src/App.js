@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Link,
+  Redirect,
   NavLink,
 } from "react-router-dom";
 import logo from './logo.svg';
@@ -28,6 +29,10 @@ function App() {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Redirect from="/old-home" to="/home"></Redirect>
+          <Route path="*">
+            <h1>oops no match</h1>
           </Route>
         </Switch>
         <footer className="App-header">

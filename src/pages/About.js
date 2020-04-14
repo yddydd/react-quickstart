@@ -6,6 +6,7 @@ import {
   useLocation,
   Redirect,
   Prompt,
+  Link,
 } from 'react-router-dom'
 
 export default function(props) {
@@ -23,6 +24,7 @@ export default function(props) {
     <>
       <Prompt message="你确定要离开当前页面吗？" />
       <h1>aboutid: {id}</h1>
+      <Link to="/old-home">去首页</Link>
       {id === 222 && <Redirect to={{
               pathname: "/home",
               state: { from: 1 }
