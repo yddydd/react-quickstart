@@ -2,7 +2,7 @@ import React from 'react'
 
 class Item extends React.Component {
   constructor(props) {
-    console.log('item', props)
+    // console.log('item', props)
     super(props)
     this.state = {
       added: false,
@@ -31,7 +31,7 @@ class Item extends React.Component {
 
 export default class List extends React.Component {
   constructor(props) {
-    console.log(props)
+    // console.log(props)
     super(props)
 
     this.state = {

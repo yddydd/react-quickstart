@@ -6,7 +6,7 @@ export default function (props) {
   const self = this
 
   function handleChange(e) {
-    console.log(self)
+    // console.log(self)
     setValue(e.target.value)
   }
 

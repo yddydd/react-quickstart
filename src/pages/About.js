@@ -16,10 +16,10 @@ export default function(props) {
   let history = useHistory()
   let location = useLocation()
 
-  console.log('route-api-useParams', params)
-  console.log('route-api-useRouteMatch', match)
-  console.log('route-api-useHistory', history)
-  console.log('route-api-useLocation', location)
+  // console.log('route-api-useParams', params)
+  // console.log('route-api-useRouteMatch', match)
+  // console.log('route-api-useHistory', history)
+  // console.log('route-api-useLocation', location)
   return (
     <>
       <Prompt message="你确定要离开当前页面吗？" />
