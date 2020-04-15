@@ -1,26 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
+import createSagaMiddleware from 'redux-saga'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import todoApp from './models/reducers'
+import mySaga from './models/sagas'
 import {
   addTodo,
   // toggleTodo,
   // setVisibilityFilter,
   // VisibilityFilters
 } from './models/actions'
-
-let store = createStore(todoApp)
-console.log('??store???', store.getState())
+const sagaMiddleware = createSagaMiddleware()
+let store = createStore(todoApp, applyMiddleware(sagaMiddleware))
+console.log('??store???', store, store.getState())
 // 每次 state 更新时，打印日志
 // 注意 subscribe() 返回一个函数用来注销监听器
 const unsubscribe = store.subscribe(() =>
   console.log('=======', store.getState())
 )
-
+sagaMiddleware.run(mySaga)
 // 发起一系列 action
 store.dispatch(addTodo('Learn about actions'))
 store.dispatch(addTodo('Learn about reducers'))

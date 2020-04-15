@@ -5,6 +5,7 @@
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+export const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED'
 
 /*
 * 其它的常量
@@ -26,6 +27,9 @@ export function addTodo(text) {
 
 export function toggleTodo(index) {
  return { type: TOGGLE_TODO, index }
+}
+export function fetchUser(id) {
+  return { type: USER_FETCH_REQUESTED, id }
 }
 
 export function setVisibilityFilter(filter) {
