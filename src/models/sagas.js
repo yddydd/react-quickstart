@@ -3,7 +3,8 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 // import Api from '...'
 /*
  * take()
- * put() 创建 dispatch Effect
+ * call(fn, params) 执行一个函数 、调用函数 
+ * put(object) 创建 dispatch Effect、派发一个action
  */
 
 // worker Saga : 将在 TOGGLE_TODO action 被 dispatch 时调用
@@ -11,11 +12,30 @@ function* modifyTodo(action) {
   console.log('???saga???', action)
    try {
       // const user = yield call(Api.fetchUser, action.payload.userId);
+      // fetch api
       yield put({type: "TODO_MODIFY_SUCCEEDED", index: action.index});
    } catch (e) {
       yield put({type: "TODO_MODIFY_FAILED", message: e.message});
    }
 }
+
+// 错误处理 try catch.... Promise call
+
+// function fetchModify(payload) {
+//   return Api.fetch('/url')
+//     .then(res => res)
+//     .catch(err => err)
+// }
+
+// function* modifyTodo(action) {
+//   const { res, err } = yield call(fetchModify, { idx: action.index })
+
+//   if (res) {
+//     yield put({type: 'TODO_MODIFY_SUCCEEDED', index: action.index})
+//   } else {
+//     yield put({type: 'TODO_MODIFY_FAILED', index: action.index})
+//   }
+// }
 
 /*
   在每个 `TOGGLE_TODO` action 被 dispatch 时调用 fetchUser
