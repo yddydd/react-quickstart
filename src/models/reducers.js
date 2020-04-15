@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import {
   ADD_TODO,
   TOGGLE_TODO,
+  TODO_MODIFY_SUCCEEDED,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
 } from './actions'
@@ -27,8 +28,8 @@ function todos(state = [], action) {
           completed: false
         }
       ]
-    case TOGGLE_TODO:
-      console.log('???')
+    case TODO_MODIFY_SUCCEEDED:
+      console.log('???', action)
       return state.map((todo, index) => {
         if (index === action.index) {
           return Object.assign({}, todo, {
@@ -44,7 +45,7 @@ function todos(state = [], action) {
 
 const todoApp = combineReducers({
   visibilityFilter,
-  todos
+  todos,
 })
 
 export default todoApp

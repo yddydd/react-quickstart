@@ -18,7 +18,6 @@ export default class TodoList extends React.Component {
         {
           this.props.todos.map((item, index) => <Todo key={index} item={item} onClick={() => this.onClick(index)} />)
         }
-        <button onClick={() => this.props.fetchUser(1)}>fetchuser</button>
       </>
     )
   }
