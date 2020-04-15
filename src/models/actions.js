@@ -3,6 +3,7 @@
 */
 
 export const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO_UI = 'ADD_TODO_UI'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const TODO_MODIFY_SUCCEEDED = 'TODO_MODIFY_SUCCEEDED'
@@ -23,6 +24,10 @@ export const VisibilityFilters = {
 
 export function addTodo(text) {
  return { type: ADD_TODO, text }
+}
+
+export function addTodoWhenThird(text) {
+ return { type: ADD_TODO_UI, text }
 }
 
 export function toggleTodo(index) {

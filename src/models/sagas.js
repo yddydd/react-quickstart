@@ -1,15 +1,19 @@
 
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery, take, takeLatest, all, select } from 'redux-saga/effects'
 // import Api from '...'
 /*
- * take()
+ * takeEvery(ACTION.type, saga) 捕获ACTION.type每次触发时执行一个saga Generator
+ * takeEvery(*, saga) 每次触发ACTION就执行一个saga Generator
+ * take(ACTION.tyoe) 等待一个ACTION 未等到暂停当前saga 等到触发后再执行
+ * select() 获取当前store的state
+ * all([saga1, saga2...])合并多个saga
  * call(fn, params) 执行一个函数 、调用函数 
  * put(object) 创建 dispatch Effect、派发一个action
  */
 
 // worker Saga : 将在 TOGGLE_TODO action 被 dispatch 时调用
 function* modifyTodo(action) {
-  console.log('???saga???', action)
+  console.log('saga+modifyTodo', action)
    try {
       // const user = yield call(Api.fetchUser, action.payload.userId);
       // fetch api
@@ -36,13 +40,38 @@ function* modifyTodo(action) {
 //     yield put({type: 'TODO_MODIFY_FAILED', index: action.index})
 //   }
 // }
+function* logger(action) {
+  const state = yield select()
+
+  console.log('saga+logger', action.type, state)
+}
+
+function* watchAndLog() {
+  while (true) {
+    const action = yield take('TODO_MODIFY_SUCCEEDED')
+    const state = yield select()
+
+    console.log('action', action)
+    console.log('state after', state)
+  }
+}
+
+function* addTodoThird() {
+  let action = {}
+  for(let i = 0; i < 3; i++) {
+    action = yield take('ADD_TODO_UI')
+    console.log('点击次数', i + 1)
+  }
+  yield put({ type: 'ADD_TODO', text: action.text})
+}
 
 /*
   在每个 `TOGGLE_TODO` action 被 dispatch 时调用 fetchUser
   允许并发（译注：即同时处理多个相同的 action）
 */
 function* mySaga() {
-  yield takeEvery("TOGGLE_TODO", modifyTodo);
+  yield all([takeEvery("TOGGLE_TODO", modifyTodo), takeEvery('*', logger), watchAndLog(), addTodoThird()])
+  // yield takeEvery('*', logger)
 }
 
 /*

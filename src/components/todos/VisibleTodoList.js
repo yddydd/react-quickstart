@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../../models/actions'
+import { toggleTodo, addTodoWhenThird } from '../../models/actions'
 import TodoList from './TodoList'
 
 const getVisibleTodos = (todos, filter) => {
@@ -10,6 +10,8 @@ const getVisibleTodos = (todos, filter) => {
       return todos.filter(t => t.completed)
     case 'SHOW_ACTIVE':
       return todos.filter(t => !t.completed)
+    default:
+      return ''
   }
 }
 
@@ -24,6 +26,9 @@ const mapDispatchToProps = dispatch => {
     onTodoClick: id => {
       dispatch(toggleTodo(id))
     },
+    addTodoWhenThird: text => {
+      dispatch(addTodoWhenThird(text))
+    }
   }
 }
 
