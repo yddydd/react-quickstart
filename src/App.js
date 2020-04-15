@@ -17,6 +17,7 @@ import RefComp from './components/refComp'
 import StateHook from './components/stateHook'
 import About from './pages/About'
 import Home from './pages/Home'
+import LoginComp from './components/loginComp'
 
 function App() {
   const ref = React.createRef();
@@ -39,6 +40,7 @@ function App() {
           <NavLink to="/about/222" exact activeClassName="selected">About</NavLink>
           <NavLink to="/home" strict>Home</NavLink>
           <img src={logo} className="App-logo" alt="logo" />
+          <LoginComp />
           <FunctionComp from="app"/>
           <ClassComp />
           <ListComp numbers={[1, 2, 3]}/>

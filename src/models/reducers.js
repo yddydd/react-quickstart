@@ -2,6 +2,8 @@ import { combineReducers } from 'redux'
 import {
   ADD_TODO,
   TOGGLE_TODO,
+  LOGIN_SUCCESS,
+  LOGIN_OUT,
   TODO_MODIFY_SUCCEEDED,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
@@ -43,9 +45,24 @@ function todos(state = [], action) {
   }
 }
 
+function user(state = {}, action) {
+  switch(action.type) {
+    case LOGIN_SUCCESS: 
+      return {
+        ...state,
+        ...action.payload
+      }
+    case LOGIN_OUT:
+      return {}
+    default: 
+      return state
+  }
+}
+
 const todoApp = combineReducers({
   visibilityFilter,
   todos,
+  user,
 })
 
 export default todoApp

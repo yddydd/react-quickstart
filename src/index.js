@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux'
 import todoApp from './models/reducers'
 import mySaga from './models/sagas'
+import loginSaga from './models/saga-login'
 import {
   addTodo,
   // toggleTodo,
@@ -23,6 +24,7 @@ const unsubscribe = store.subscribe(() =>
   console.log('=======', store.getState())
 )
 sagaMiddleware.run(mySaga)
+sagaMiddleware.run(loginSaga)
 // 发起一系列 action
 store.dispatch(addTodo('Learn about actions'))
 store.dispatch(addTodo('Learn about reducers'))

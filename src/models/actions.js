@@ -8,6 +8,10 @@ export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const TODO_MODIFY_SUCCEEDED = 'TODO_MODIFY_SUCCEEDED'
 
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_OUT = 'LOGIN_OUT'
+
 /*
 * 其它的常量
 */
@@ -35,4 +39,16 @@ export function toggleTodo(index) {
 }
 export function setVisibilityFilter(filter) {
  return { type: SET_VISIBILITY_FILTER, filter }
+}
+
+export function login(payload) {
+  return { type: LOGIN_REQUEST, payload }
+}
+
+export function loginSuccess(payload) {
+  return { type: LOGIN_SUCCESS, payload}
+}
+
+export function logout() {
+  return { type: LOGIN_OUT }
 }

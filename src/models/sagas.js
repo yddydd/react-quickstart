@@ -57,12 +57,14 @@ function* watchAndLog() {
 }
 
 function* addTodoThird() {
-  let action = {}
-  for(let i = 0; i < 3; i++) {
-    action = yield take('ADD_TODO_UI')
-    console.log('点击次数', i + 1)
+  while(true) {
+    let action = {}
+    for(let i = 0; i < 3; i++) {
+      action = yield take('ADD_TODO_UI')
+      console.log('点击次数', i + 1)
+    }
+    yield put({ type: 'ADD_TODO', text: action.text})
   }
-  yield put({ type: 'ADD_TODO', text: action.text})
 }
 
 /*
@@ -71,7 +73,9 @@ function* addTodoThird() {
 */
 function* mySaga() {
   yield all([takeEvery("TOGGLE_TODO", modifyTodo), takeEvery('*', logger), watchAndLog(), addTodoThird()])
-  // yield takeEvery('*', logger)
+  // yield [
+  //   call(takeEvery('TOGGLE_TODO', modifyTodo))
+  // ]
 }
 
 /*
